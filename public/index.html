@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antigravity Creative Studio | AI PDF, PPT & Image Generator</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP HEADER -->
+  <header class="studio-header sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl px-6 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="logo-orb flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 shadow-lg shadow-indigo-500/20">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-outfit font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">Antigravity</span>
+          <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">STUDIO</span>
+        </div>
+        <div class="text-xs text-slate-400 font-medium">AI PDF, PPT &amp; Creative Design Suite</div>
+      </div>
+    </div>
+
+    <!-- Center Navigation Tabs -->
+    <nav class="flex items-center bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+      <button class="nav-tab active" data-tab="ppt">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Presentation (PPT)</span>
+      </button>
+      <button class="nav-tab" data-tab="pdf">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>PDF Document</span>
+      </button>
+      <button class="nav-tab" data-tab="image">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Image &amp; Vector Art</span>
+      </button>
+      <button class="nav-tab" data-tab="enhance">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Enhance &amp; Upscale</span>
+      </button>
+      <button class="nav-tab" data-tab="history">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Gallery</span>
+      </button>
+    </nav>
+
+    <!-- Right Controls: Model Picker & Status -->
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-slate-300 font-medium">Antigravity CLI</span>
+      </div>
+      <div class="relative">
+        <select id="modelSelector" class="bg-slate-900 border border-slate-700/80 text-xs text-slate-200 rounded-lg px-3 py-1.5 pr-7 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none font-medium cursor-pointer">
+          <option value="gemini-3.8-flash-low">Gemini 3.8 Flash (Low Latency)</option>
+          <option value="gemini-3.8-flash-high">Gemini 3.8 Flash (High Reasoning)</option>
+          <option value="gemini-3.1-pro-high">Gemini 3.1 Pro (Deep)</option>
+          <option value="claude-sonnet-4-6">Claude Sonnet 4.6</option>
+          <option value="gpt-oss-120b-medium">GPT-OSS 120B</option>
+        </select>
+        <svg class="w-3.5 h-3.5 absolute right-2.5 top-2.5 text-slate-400 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
+
+    <!-- 1. PRESENTATION (PPT) TAB -->
+    <section id="tab-ppt" class="tab-content active space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Input & Options Panel -->
+        <div class="lg:col-span-4 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-outfit font-bold text-lg text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-sm bg-indigo-500 inline-block"></span>
+                PPT Slide Deck Generator
+              </h2>
+              <span class="text-xs text-slate-400">Native .PPTX</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Topic or Presentation Outline</label>
+              <textarea id="pptPrompt" rows="4" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" placeholder="e.g. Augmented & Virtual Reality in Tourism: Transforming Travel Experiences Through Immersive Technology..."></textarea>
+            </div>
+
+            <!-- Quick sample pills -->
+            <div>
+              <span class="text-xs text-slate-400 block mb-1.5 font-medium">Quick Ideas:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button class="sample-pill" data-target="pptPrompt" data-text="Augmented &amp; Virtual Reality in Tourism: Transforming Travel Experiences Through Immersive Technology">AR/VR in Tourism</button>
+                <button class="sample-pill" data-target="pptPrompt" data-text="Autonomous AI Agents: Orchestration, Reasoning &amp; Enterprise Impact">AI Agents &amp; Reasoning</button>
+                <button class="sample-pill" data-target="pptPrompt" data-text="Next-Gen Cybersecurity: Zero Trust, Threat Intelligence &amp; Quantum Resiliency">Cybersecurity Zero-Trust</button>
+                <button class="sample-pill" data-target="pptPrompt" data-text="Sustainable Energy Transition: Grid Modernization &amp; Green Tech Infrastructure">Green Tech &amp; Grid</button>
+              </div>
+            </div>
+
+            <!-- Settings Grid -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Theme &amp; Palette</label>
+                <select id="pptTheme" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+                  <option value="modern_dark">Modern Dark Tech</option>
+                  <option value="electric_violet">Electric Violet</option>
+                  <option value="emerald_growth">Emerald Growth</option>
+                  <option value="corporate_blue">Corporate Executive</option>
+                  <option value="minimal_mono">Minimal Luxury</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Slide Count</label>
+                <select id="pptSlideCount" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
+                  <option value="3">3 Slides (Brief)</option>
+                  <option value="5" selected>5 Slides (Standard)</option>
+                  <option value="7">7 Slides (Deep)</option>
+                  <option value="10">10 Slides (Keynote)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-800/80 mt-6">
+            <button id="btnGeneratePpt" class="btn-primary w-full py-3 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Generate Presentation (.PPTX)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slide Deck Preview & Presentation Canvas -->
+        <div class="lg:col-span-8 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between min-h-[560px]">
+          <!-- Deck Toolbar -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <span id="deckTitleDisplay" class="font-outfit font-bold text-white text-base truncate max-w-md">Slide Deck Preview</span>
+              <span id="deckSlideCounter" class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono">Slide 1 of 5</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="btnPrevSlide" class="control-btn" title="Previous Slide (Left Arrow)">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button id="btnNextSlide" class="control-btn" title="Next Slide (Right Arrow)">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+              <button id="btnFullscreenPpt" class="control-btn" title="Fullscreen Presentation Mode">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              </button>
+              <a id="btnDownloadPptx" href="#" class="btn-secondary text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download .PPTX</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide Display Area -->
+          <div class="flex-1 flex items-center justify-center p-4">
+            <div id="slideViewport" class="slide-canvas w-full max-w-2xl aspect-[16/9] rounded-xl shadow-2xl p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300">
+              <!-- Content rendered dynamically via app.js -->
+              <div class="empty-state text-center my-auto">
+                <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 mx-auto flex items-center justify-center mb-3">
+                  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3 class="font-outfit font-semibold text-slate-200 text-base">No Slide Deck Loaded</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto mt-1">Enter a topic on the left and click "Generate Presentation" to create a complete .PPTX deck powered by the Antigravity CLI.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide Thumbnails Strip -->
+          <div id="slideThumbnails" class="flex gap-2 overflow-x-auto pt-3 border-t border-slate-800/80 pb-1 scrollbar-thin">
+            <!-- Dynamic thumbnails -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PDF CREATIVE DOCUMENT STUDIO TAB -->
+    <section id="tab-pdf" class="tab-content space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Document Configuration Panel -->
+        <div class="lg:col-span-4 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-outfit font-bold text-lg text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-sm bg-pink-500 inline-block"></span>
+                PDF Creative Studio
+              </h2>
+              <span class="text-xs text-slate-400">300 DPI Vector PDF</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Document Template Type</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="doc-type-btn active" data-type="certificate">
+                  <span class="font-semibold block text-xs">🎓 Certificate</span>
+                  <span class="text-[10px] text-slate-400">Completion &amp; Award</span>
+                </button>
+                <button class="doc-type-btn" data-type="report">
+                  <span class="font-semibold block text-xs">📊 Project Report</span>
+                  <span class="text-[10px] text-slate-400">IEEE &amp; Executive</span>
+                </button>
+                <button class="doc-type-btn" data-type="resume">
+                  <span class="font-semibold block text-xs">💼 Modern Resume</span>
+                  <span class="text-[10px] text-slate-400">CV &amp; Portfolio</span>
+                </button>
+                <button class="doc-type-btn" data-type="invoice">
+                  <span class="font-semibold block text-xs">📑 Proposal &amp; Invoice</span>
+                  <span class="text-[10px] text-slate-400">B2B Contract</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Content &amp; Project Details</label>
+              <textarea id="pdfPrompt" rows="4" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-pink-500 resize-none" placeholder="e.g. Certificate of Completion for Augmented Reality (AR) in Tourism, awarded to A3 Group 2, Ramrao Adik Institute of Technology..."></textarea>
+            </div>
+
+            <!-- Quick sample pills -->
+            <div>
+              <span class="text-xs text-slate-400 block mb-1.5 font-medium">Quick Ideas:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button class="sample-pill" data-target="pdfPrompt" data-text="Course Completion Certificate: Augmented Reality (AR) &amp; VR in Tourism, Ramrao Adik Institute of Technology, Guide: Mrs. Nisha Narwani">RAIT AR/VR Certificate</button>
+                <button class="sample-pill" data-target="pdfPrompt" data-text="Executive Research Report: Quantum Computing Advancements &amp; Financial Cryptography Benchmarks">Quantum Cryptography Report</button>
+                <button class="sample-pill" data-target="pdfPrompt" data-text="Senior Machine Learning Engineer Resume: 6+ Yrs Exp, PyTorch, LLMs, Distributed Systems, Stanford Alumni">Senior ML Engineer Resume</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-800/80 mt-6">
+            <button id="btnGeneratePdf" class="btn-primary w-full py-3 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-pink-600/30 bg-gradient-to-r from-pink-600 to-indigo-600">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Generate PDF Document</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Document Live Viewport -->
+        <div class="lg:col-span-8 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between min-h-[560px]">
+          <!-- PDF Toolbar -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <span id="pdfTitleDisplay" class="font-outfit font-bold text-white text-base">Document Live Preview</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono">Print Ready (A4)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="btnPrintPdf" class="btn-secondary text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                <span>Print / Save</span>
+              </button>
+              <a id="btnDownloadPdf" href="#" class="btn-primary text-xs px-4 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none bg-gradient-to-r from-pink-600 to-indigo-600">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download .PDF</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Document Preview Frame -->
+          <div class="flex-1 flex items-center justify-center p-2 overflow-auto max-h-[600px] bg-slate-950/60 rounded-xl my-4 border border-slate-800/60">
+            <iframe id="pdfPreviewFrame" class="w-full h-[540px] bg-white rounded-lg shadow-2xl border-0"></iframe>
+          </div>
+
+          <div class="text-xs text-slate-400 flex items-center justify-between pt-2">
+            <span>Rendered at 300 DPI vector fidelity. Compatible with all PDF readers &amp; printers.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. IMAGE & VECTOR GRAPHIC STUDIO TAB -->
+    <section id="tab-image" class="tab-content space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Configuration -->
+        <div class="lg:col-span-4 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-outfit font-bold text-lg text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-sm bg-cyan-400 inline-block"></span>
+                Image &amp; Vector Studio
+              </h2>
+              <span class="text-xs text-slate-400">SVG &amp; High-Res PNG</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Graphic Preset Format</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="image-format-btn active" data-format="banner">
+                  <span class="font-semibold block text-xs">🌐 Social Banner</span>
+                  <span class="text-[10px] text-slate-400">1200 × 400</span>
+                </button>
+                <button class="image-format-btn" data-format="square">
+                  <span class="font-semibold block text-xs">📱 Square Post</span>
+                  <span class="text-[10px] text-slate-400">1080 × 1080</span>
+                </button>
+                <button class="image-format-btn" data-format="poster">
+                  <span class="font-semibold block text-xs">🖼️ Creative Poster</span>
+                  <span class="text-[10px] text-slate-400">800 × 1200</span>
+                </button>
+                <button class="image-format-btn" data-format="vector">
+                  <span class="font-semibold block text-xs">✨ Vector Art / Badge</span>
+                  <span class="text-[10px] text-slate-400">800 × 800</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Creative Visual Prompt</label>
+              <textarea id="imagePrompt" rows="4" class="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none" placeholder="e.g. Futuristic neural network intelligence banner with deep indigo gradients, glowing nodes, and clean minimalist branding..."></textarea>
+            </div>
+
+            <!-- Quick sample pills -->
+            <div>
+              <span class="text-xs text-slate-400 block mb-1.5 font-medium">Quick Ideas:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button class="sample-pill" data-target="imagePrompt" data-text="Next-Gen Artificial Intelligence &amp; Autonomous Systems Developer Banner with Cyber Neon Cyan Accents">AI Developer Banner</button>
+                <button class="sample-pill" data-target="imagePrompt" data-text="Augmented Reality Spatial Computing Showcase Poster with Holographic Gradients">Spatial Computing Poster</button>
+                <button class="sample-pill" data-target="imagePrompt" data-text="Geometric Quantum Shield Crest Vector Icon with Golden Ratio Spiral">Quantum Shield Crest</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-800/80 mt-6">
+            <button id="btnGenerateImage" class="btn-primary w-full py-3 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/30 bg-gradient-to-r from-cyan-600 to-blue-600">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Generate Creative Artwork</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Graphic Viewport -->
+        <div class="lg:col-span-8 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between min-h-[560px]">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <span id="imageTitleDisplay" class="font-outfit font-bold text-white text-base">Graphic Canvas</span>
+              <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono">Scalable Vector</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="btnCopySvg" class="btn-secondary text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy SVG</span>
+              </button>
+              <a id="btnDownloadSvg" href="#" class="btn-secondary text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none">
+                <span>Download .SVG</span>
+              </a>
+              <a id="btnDownloadPng" href="#" class="btn-primary text-xs px-4 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none bg-gradient-to-r from-cyan-600 to-blue-600">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download .PNG</span>
+              </a>
+            </div>
+          </div>
+
+          <div id="imageCanvasContainer" class="flex-1 flex items-center justify-center p-4 bg-slate-950/60 rounded-xl my-4 border border-slate-800/60 overflow-hidden">
+            <div class="empty-state text-center my-auto">
+              <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center mb-3">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </div>
+              <h3 class="font-outfit font-semibold text-slate-200 text-base">No Graphic Generated Yet</h3>
+              <p class="text-xs text-slate-400 max-w-sm mx-auto mt-1">Select a layout preset and enter your vision on the left to generate rich vector artwork and social banners.</p>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-400 flex items-center justify-between pt-2">
+            <span>Infinite resolution scalable vector graphics (SVG) with rasterized PNG export.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ENHANCE & UPSCALE (OPENCV 300+ DPI PIPELINE) TAB -->
+    <section id="tab-enhance" class="tab-content space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Upload & Settings -->
+        <div class="lg:col-span-4 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="font-outfit font-bold text-lg text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-sm bg-emerald-400 inline-block"></span>
+                Document &amp; Image Enhancer
+              </h2>
+              <span class="text-xs text-emerald-400 font-mono">300+ DPI Engine</span>
+            </div>
+
+            <p class="text-xs text-slate-400">
+              Transform low-resolution screenshots, blurry scans, certificates, and logos into ultra-crisp, print-ready 300+ DPI documents using bilateral denoising, text contrast recovery, and Lanczos super-resolution.
+            </p>
+
+            <!-- Drop Zone -->
+            <div id="dropZone" class="border-2 border-dashed border-slate-700 hover:border-emerald-500/70 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-950/40">
+              <input type="file" id="imageFileInput" class="hidden" accept="image/png,image/jpeg,image/webp" />
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="font-semibold text-sm text-slate-200" id="uploadStatusText">Click or Drag &amp; Drop Image</div>
+              <div class="text-[11px] text-slate-400 mt-1">Supports PNG, JPG, WEBP up to 25 MB</div>
+            </div>
+
+            <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs space-y-1 text-slate-400">
+              <div class="font-semibold text-slate-300">Included Enhancements:</div>
+              <div>• Bilateral compression artifact suppression</div>
+              <div>• Text edge sharpening &amp; deep black restoration</div>
+              <div>• Clean white background normalization</div>
+              <div>• 3x Lanczos-4 upscaling to 300+ DPI</div>
+              <div>• Automatic compilation to print-ready PDF</div>
+            </div>
+          </div>
+
+          <div class="pt-5 border-t border-slate-800/80 mt-6">
+            <button id="btnRunEnhance" class="btn-primary w-full py-3 text-sm font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 bg-gradient-to-r from-emerald-600 to-teal-600">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              <span>Enhance to 300 DPI</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Before / After Viewer -->
+        <div class="lg:col-span-8 bg-slate-900/70 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col justify-between min-h-[560px]">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="font-outfit font-bold text-white text-base">Interactive Enhancement Comparison</span>
+              <span id="enhancementBadge" class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono">Ready</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <a id="btnDownloadEnhancePng" href="#" class="btn-secondary text-xs px-3.5 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download 300 DPI PNG</span>
+              </a>
+              <a id="btnDownloadEnhancePdf" href="#" class="btn-primary text-xs px-4 py-2 rounded-lg font-semibold flex items-center gap-1.5 opacity-50 pointer-events-none bg-gradient-to-r from-emerald-600 to-teal-600">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Download Print PDF</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Split Comparison Container -->
+          <div class="flex-1 flex items-center justify-center p-2 relative overflow-hidden bg-slate-950/60 rounded-xl my-4 border border-slate-800/60 max-h-[500px]">
+            <div id="enhanceViewerContainer" class="w-full h-full flex items-center justify-center relative">
+              <div class="empty-state text-center my-auto">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+                  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+                <h3 class="font-outfit font-semibold text-slate-200 text-base">No Image Uploaded</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto mt-1">Upload a blurry document, certificate, or image to see the high-resolution enhancement results.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-400 flex items-center justify-between pt-2">
+            <span>Powered by OpenCV Bilateral Filter, Custom Tone Curves &amp; Lanczos-4 Super-Resolution.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. RECENT GALLERY TAB -->
+    <section id="tab-history" class="tab-content space-y-6">
+      <div class="bg-slate-900/70 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-md">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <div>
+            <h2 class="font-outfit font-bold text-lg text-white">Recent Studio Creations</h2>
+            <p class="text-xs text-slate-400">All PDF documents, presentation decks, and images generated during your session.</p>
+          </div>
+          <button id="btnClearHistory" class="text-xs text-rose-400 hover:text-rose-300 font-medium">Clear History</button>
+        </div>
+
+        <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-6">
+          <!-- Populated by app.js -->
+          <div class="col-span-full text-center py-12 text-slate-500 text-sm">
+            No creations in your session history yet. Start by generating a PPT, PDF, or Graphic above!
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOADING OVERLAY MODAL -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-slate-900 border border-slate-700/80 rounded-2xl p-8 max-w-md w-full text-center shadow-2xl space-y-4">
+      <div class="relative w-16 h-16 mx-auto">
+        <div class="absolute inset-0 rounded-full border-4 border-indigo-500/20"></div>
+        <div class="absolute inset-0 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin"></div>
+        <div class="absolute inset-2 rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+      </div>
+      <h3 id="loadingTitle" class="font-outfit font-bold text-lg text-white">Antigravity AI is Crafting...</h3>
+      <p id="loadingStatus" class="text-xs text-slate-400">Prompting Antigravity CLI in backend...</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
