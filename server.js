@@ -67,6 +67,22 @@ app.get('/api/models', async (req, res) => {
   }
 });
 
+// Serverless-compatible AI Completion Endpoint
+app.post('/api/generate', async (req, res) => {
+  try {
+    const { prompt, systemPrompt, model = 'gemini-3.8-flash-low' } = req.body || {};
+    if (!prompt || !prompt.trim()) {
+      return res.status(400).json({ error: 'Prompt is required' });
+    }
+    const fullPrompt = systemPrompt ? `${systemPrompt}\n\nUser Request: ${prompt}` : prompt;
+    const text = await runAgy(fullPrompt, model);
+    res.json({ success: true, text });
+  } catch (err) {
+    console.error('API generate error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // 3. Generate Presentation (PPT / PPTX)
 app.post('/api/generate/ppt', async (req, res) => {
   try {
